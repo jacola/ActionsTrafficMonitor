@@ -16,9 +16,6 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateWorkflowJob(WebhookPayload payload)
         {
-            //string content = await new StreamReader(Request.Body).ReadToEndAsync();
-            //Console.WriteLine(content);
-
             switch (payload.Action)
             {
                 // Create
@@ -36,7 +33,8 @@ namespace API.Controllers
                     Console.WriteLine(payload.Action);
                     break;
             }
-            return Ok("Hello World");
+
+            return Ok();
             //return Ok(await Mediator.Send(new Create.Command { Activity = activity }));
         }
     }

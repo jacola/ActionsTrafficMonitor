@@ -1,4 +1,5 @@
 using API.Extensions;
+using API.Middleware;
 
 namespace API
 {
@@ -32,12 +33,18 @@ namespace API
             app.UseRouting();
 
             app.UseCors("CorsPolicy");
-
             app.UseAuthorization();
+
+            //app.UseWebhookValidation();
+            app.UseWhen(context => context.Request.Path.Equals("/api/workflowjob", StringComparison.OrdinalIgnoreCase), appBuilder =>
+            {
+                appBuilder.UseWebhookValidation();
+            });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
