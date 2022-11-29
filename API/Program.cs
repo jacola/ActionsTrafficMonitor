@@ -1,5 +1,5 @@
-//using Persistence;
-//using Microsoft.EntityFrameworkCore;
+using Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace API
 {
@@ -13,17 +13,17 @@ namespace API
 
             var services = scope.ServiceProvider;
 
-            /*try
+            try
             {
                 var context = services.GetRequiredService<DataContext>();
                 await context.Database.MigrateAsync();
-                await Seed.SeedData(context);
+                //await Seed.SeedData(context);
             }
             catch (Exception ex)
             {
                 var logger = services.GetRequiredService<ILogger<Program>>();
                 logger.LogError(ex, "An error occured during migration");
-            }*/
+            }
 
             await host.RunAsync();
         }
