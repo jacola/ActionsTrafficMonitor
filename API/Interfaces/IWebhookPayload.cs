@@ -2,9 +2,9 @@
 
 namespace API.Interfaces
 {
-    public class WebhookPayload
+    public class IWebhookPayload
     {
         public string Action { get; set; }
-        [JsonPropertyName("workflow_job")] public WorkflowJob WorkflowJob { get; set; }
+        [JsonPropertyName("workflow_job")] public IWorkflowJob WorkflowJob { get; set; }
     }
 }

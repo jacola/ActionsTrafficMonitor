@@ -1,5 +1,5 @@
 using AutoMapper;
-//using Domain;
+using Domain;
 
 namespace Application.Core
 {
@@ -7,7 +7,10 @@ namespace Application.Core
     {
         public MappingProfiles()
         {
-            //CreateMap<WorkflowJob, WorkflowJob>();
+            // We don't want to remove optional parameters so we exclude null updates. If we didn't do this,
+            // we'd lose QueuedAt when we update StartedAt.
+            CreateMap<WorkflowJob, WorkflowJob>().ForAllMembers(o
+                => o.Condition((src, dest, srcmember, destmember) => srcmember != null));
         }
     }
 }
