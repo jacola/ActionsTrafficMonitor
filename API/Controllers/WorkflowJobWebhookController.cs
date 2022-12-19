@@ -24,8 +24,6 @@ namespace API.Controllers
                     Console.WriteLine($"id: {payload.WorkflowJob.Id}\tStatus: Queued\tTime: {payload.WorkflowJob.StartedAt.ToLocalTime()}");
                     string[] repoInfo = payload.Repository.FullName.Split('/');
 
-                    Console.WriteLine($"{repoInfo[0]}, {repoInfo[1]}, {payload.WorkflowJob.RunnerName}, {payload.WorkflowJob.RunnerGroupName}");
-
                     return Ok(await Mediator.Send(new Create.Command
                     {
                         WorkflowJob = new WorkflowJob
