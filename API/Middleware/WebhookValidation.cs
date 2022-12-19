@@ -42,6 +42,15 @@ namespace API.Middleware
             Request.Body = new MemoryStream(requestData);
 
             string secret = Environment.GetEnvironmentVariable("GITHUB_WEBHOOK_SECRET");
+
+            // Require a secret. Reject cases where the secret is blank on both sides.
+            if (StringValues.IsNullOrEmpty(secret))
+            {
+                context.Response.Clear();
+                context.Response.StatusCode = (int)StatusCodes.Status401Unauthorized;
+                return;
+            }
+
             var calcSig = Util.CalculateSignature(payloadText, signature, secret, "sha256=");
 
             // Error if the signature is invalid.
