@@ -36,7 +36,7 @@ namespace API
             app.UseAuthorization();
 
             //app.UseWebhookValidation();
-            app.UseWhen(context => context.Request.Path.Equals("/api/workflowjob", StringComparison.OrdinalIgnoreCase), appBuilder =>
+            app.UseWhen(context => context.Request.Path.Equals("/api/workflowjobwebhook", StringComparison.OrdinalIgnoreCase), appBuilder =>
             {
                 appBuilder.UseWebhookValidation();
             });
