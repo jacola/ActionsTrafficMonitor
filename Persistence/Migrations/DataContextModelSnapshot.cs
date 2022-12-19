@@ -30,11 +30,25 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("OrganizationName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime?>("QueuedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RepositoryName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long>("RunId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("RunnerGroupName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RunnerName")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("StartedAt")
                         .HasColumnType("TEXT");

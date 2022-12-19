@@ -19,6 +19,10 @@ namespace Persistence.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     RunId = table.Column<long>(type: "INTEGER", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
+                    OrganizationName = table.Column<string>(type: "TEXT", nullable: false),
+                    RepositoryName = table.Column<string>(type: "TEXT", nullable: false),
+                    RunnerName = table.Column<string>(type: "TEXT", nullable: true),
+                    RunnerGroupName = table.Column<string>(type: "TEXT", nullable: true),
                     QueuedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     StartedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CompletedAt = table.Column<DateTime>(type: "TEXT", nullable: true)
