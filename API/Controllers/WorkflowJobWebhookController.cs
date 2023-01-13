@@ -14,6 +14,12 @@ namespace API.Controllers
 {
     public class WorkflowJobWebhookController : BaseApiController
     {
+        private readonly ILogger<WorkflowJobWebhookController> _logger;
+
+        public WorkflowJobWebhookController(ILogger<WorkflowJobWebhookController> logger) =>
+            _logger = logger;
+
+
         [HttpPost]
         public async Task<IActionResult> UpdateWorkflowJob(IWebhookPayload payload)
         {
@@ -21,7 +27,7 @@ namespace API.Controllers
             {
                 // Create
                 case ActionType.Queued:
-                    Console.WriteLine($"id: {payload.WorkflowJob.Id}\tStatus: Queued\tTime: {payload.WorkflowJob.StartedAt.ToLocalTime()}");
+                    _logger.LogInformation($"id: {payload.WorkflowJob.Id}\tStatus: Queued\tTime: {payload.WorkflowJob.StartedAt.ToLocalTime()}");
                     string[] repoInfo = payload.Repository.FullName.Split('/');
 
                     return Ok(await Mediator.Send(new Create.Command
@@ -38,7 +44,7 @@ namespace API.Controllers
                     }));
                 // Update
                 case ActionType.In_Progress:
-                    Console.WriteLine($"id: {payload.WorkflowJob.Id}\tStatus: In Progress\tTime: {payload.WorkflowJob.StartedAt.ToLocalTime()}");
+                    _logger.LogInformation($"id: {payload.WorkflowJob.Id}\tStatus: In Progress\tTime: {payload.WorkflowJob.StartedAt.ToLocalTime()}");
                     return Ok(await Mediator.Send(new Edit.Command
                     {
                         WorkflowJob = new WorkflowJob
@@ -50,7 +56,7 @@ namespace API.Controllers
                         }
                     }));
                 case ActionType.Completed:
-                    Console.WriteLine($"id: {payload.WorkflowJob.Id}\tStatus: Completed\tTime: {payload.WorkflowJob.CompletedAt.Value.ToLocalTime()}");
+                    _logger.LogInformation($"id: {payload.WorkflowJob.Id}\tStatus: Completed\tTime: {payload.WorkflowJob.CompletedAt.Value.ToLocalTime()}");
                     return Ok(await Mediator.Send(new Edit.Command
                     {
                         WorkflowJob = new WorkflowJob
@@ -64,7 +70,7 @@ namespace API.Controllers
                         }
                     }));
                 default:
-                    Console.WriteLine($"Unexpected status: {payload.Action}");
+                    _logger.LogWarning($"Unexpected status: {payload.Action}");
                     return NotFound();
             }
         }

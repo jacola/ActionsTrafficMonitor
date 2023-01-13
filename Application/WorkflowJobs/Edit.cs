@@ -31,8 +31,7 @@ namespace Application.WorkflowJobs
             {
                 var workflowJob = await _context.WorkflowJobs.FindAsync(request.WorkflowJob.Id);
 
-                //activity.Title = request.Activity.Title ?? activity.Title;
-                Console.WriteLine(request.WorkflowJob);
+                //Console.WriteLine(request.WorkflowJob);
                 _mapper.Map(request.WorkflowJob, workflowJob);
 
                 await _context.SaveChangesAsync();
