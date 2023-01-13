@@ -18,7 +18,8 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> HealthCheck()
         {
-            return Ok();
+            // Make Ok() use await to get rid of CS1998 warning.
+            return await Task.Run(() => Ok());
         }
     }
 }
