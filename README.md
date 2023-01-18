@@ -18,4 +18,22 @@ FROM
 
 ## Setup
 
-1. Expects `GITHUB_WEBHOOK_SECRET` as an environment variable.
+1. The webhook receiver (this application) expects the following environment variables:
+
+| Variable | Description 
+| --- | ---
+| `GITHUB_WEBHOOK_SECRET` | Secret set for the webhook
+| `PG_SERVER` | Postgres server url
+| `PG_DATABASE` | Postgres database name
+| `PG_USERNAME` | Postgres username
+| `PG_USERNAME` | Postgres password
+
+2. Configure the webhook on GitHub as follows:
+
+| Item | Details
+| ---  | ---
+| Payload URL | `https://<your url>/api/workflowjobwebhook`
+| Content type | `application/json`
+| Secret | Your secret
+| SSL verification | `Enable SSL verification`
+| Which events would you like to trigger this webhook? | `Let me select individual events.` → `Workflow jobs`
