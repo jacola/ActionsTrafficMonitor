@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain
 {
+    [Table("workflow_jobs")]
     public class WorkflowJob
     {
         public long Id { get; set; }

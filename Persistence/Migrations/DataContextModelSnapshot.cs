@@ -62,7 +62,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkflowJobs");
+                    b.ToTable("workflow_jobs");
                 });
 #pragma warning restore 612, 618
         }

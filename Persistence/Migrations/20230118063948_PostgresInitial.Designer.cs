@@ -12,7 +12,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230111080613_PostgresInitial")]
+    [Migration("20230118063948_PostgresInitial")]
     partial class PostgresInitial
     {
         /// <inheritdoc />
@@ -65,7 +65,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkflowJobs");
+                    b.ToTable("workflow_jobs");
                 });
 #pragma warning restore 612, 618
         }

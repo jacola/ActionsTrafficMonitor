@@ -13,7 +13,7 @@ namespace Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "WorkflowJobs",
+                name: "workflow_jobs",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -30,7 +30,7 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WorkflowJobs", x => x.Id);
+                    table.PrimaryKey("PK_workflow_jobs", x => x.Id);
                 });
         }
 
@@ -38,7 +38,7 @@ namespace Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "WorkflowJobs");
+                name: "workflow_jobs");
         }
     }
 }
