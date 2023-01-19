@@ -12,7 +12,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230111080613_PostgresInitial")]
+    [Migration("20230119075747_PostgresInitial")]
     partial class PostgresInitial
     {
         /// <inheritdoc />
@@ -29,43 +29,58 @@ namespace Persistence.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime?>("CompletedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("completed_at");
+
+                    b.Property<string>("Labels")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("labels");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("name");
 
                     b.Property<string>("OrganizationName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("org_name");
 
                     b.Property<DateTime?>("QueuedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("queued_at");
 
                     b.Property<string>("RepositoryName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("repo_name");
 
                     b.Property<long>("RunId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("run_id");
 
                     b.Property<string>("RunnerGroupName")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("runner_group_name");
 
                     b.Property<string>("RunnerName")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("runner_name");
 
                     b.Property<DateTime?>("StartedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("started_at");
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkflowJobs");
+                    b.ToTable("workflow_jobs");
                 });
 #pragma warning restore 612, 618
         }
