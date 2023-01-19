@@ -9,6 +9,7 @@ using Persistence;
 using API.Interfaces;
 using Application;
 using Application.WorkflowJobs;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -40,6 +41,7 @@ namespace API.Controllers
                             QueuedAt = payload.WorkflowJob.StartedAt,
                             OrganizationName = repoInfo[0],
                             RepositoryName = repoInfo[1],
+                            Labels = JsonConvert.SerializeObject(payload.WorkflowJob.Labels),
                         }
                     }));
                 // Update
@@ -53,6 +55,8 @@ namespace API.Controllers
                             RunId = payload.WorkflowJob.RunId,
                             Name = payload.WorkflowJob.Name,
                             StartedAt = payload.WorkflowJob.StartedAt,
+                            RunnerName = payload.WorkflowJob.RunnerName,
+                            RunnerGroupName = payload.WorkflowJob.RunnerGroupName,
                         }
                     }));
                 case ActionType.Completed:
@@ -65,8 +69,6 @@ namespace API.Controllers
                             RunId = payload.WorkflowJob.RunId,
                             Name = payload.WorkflowJob.Name,
                             CompletedAt = payload.WorkflowJob.CompletedAt,
-                            RunnerName = payload.WorkflowJob.RunnerName,
-                            RunnerGroupName = payload.WorkflowJob.RunnerGroupName,
                         }
                     }));
                 default:
