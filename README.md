@@ -41,3 +41,9 @@ FROM
 | Secret                                               | Your secret                                          |
 | SSL verification                                     | `Enable SSL verification`                            |
 | Which events would you like to trigger this webhook? | `Let me select individual events.` → `Workflow jobs` |
+
+## Limitations
+
+**Missing Events**
+
+Workflows should fire webhook events in the following order: `workflow_job.queued` → `workflow_job.in_progress` → `workflow_job.completed`. However, if a job is processed too quickly (example just `run: echo "Hello World!"`) only two events fire: `workflow_job.queued` → `workflow_job.completed`
