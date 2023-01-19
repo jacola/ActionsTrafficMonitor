@@ -16,6 +16,7 @@ namespace Domain
         [Column("run_id")] public long RunId { get; set; }
         [Column("name")] public string Name { get; set; }
         [Column("org_name")] public string OrganizationName { get; set; }
+        [Column("labels")] public string Labels { get; set; }
         [Column("repo_name")] public string RepositoryName { get; set; }
         [Column("runner_name")] public string? RunnerName { get; set; }
         [Column("runner_group_name")] public string? RunnerGroupName { get; set; }

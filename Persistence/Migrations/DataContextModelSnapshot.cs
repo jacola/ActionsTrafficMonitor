@@ -35,6 +35,11 @@ namespace Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("completed_at");
 
+                    b.Property<string>("Labels")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("labels");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text")

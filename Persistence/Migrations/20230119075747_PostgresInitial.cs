@@ -21,6 +21,7 @@ namespace Persistence.Migrations
                     runid = table.Column<long>(name: "run_id", type: "bigint", nullable: false),
                     name = table.Column<string>(type: "text", nullable: false),
                     orgname = table.Column<string>(name: "org_name", type: "text", nullable: false),
+                    labels = table.Column<string>(type: "text", nullable: false),
                     reponame = table.Column<string>(name: "repo_name", type: "text", nullable: false),
                     runnername = table.Column<string>(name: "runner_name", type: "text", nullable: true),
                     runnergroupname = table.Column<string>(name: "runner_group_name", type: "text", nullable: true),

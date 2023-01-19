@@ -12,7 +12,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230118064531_PostgresInitial")]
+    [Migration("20230119075747_PostgresInitial")]
     partial class PostgresInitial
     {
         /// <inheritdoc />
@@ -37,6 +37,11 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("CompletedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("completed_at");
+
+                    b.Property<string>("Labels")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("labels");
 
                     b.Property<string>("Name")
                         .IsRequired()

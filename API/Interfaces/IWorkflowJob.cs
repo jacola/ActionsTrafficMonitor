@@ -12,5 +12,6 @@ namespace API.Interfaces
         public List<IStep> Steps { get; set; }
         [JsonPropertyName("runner_name")] public string RunnerName { get; set; }
         [JsonPropertyName("runner_group_name")] public string RunnerGroupName { get; set; }
+        [JsonPropertyName("labels")] public string[] Labels { get; set; }
     }
 }
