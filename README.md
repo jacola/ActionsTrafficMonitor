@@ -46,4 +46,5 @@ FROM
 
 **Missing Events**
 
-Workflows should fire webhook events in the following order: `workflow_job.queued` → `workflow_job.in_progress` → `workflow_job.completed`. However, if a job is processed too quickly (example just `run: echo "Hello World!"`) only two events fire: `workflow_job.queued` → `workflow_job.completed`
+* Workflows should fire webhook events in the following order: `workflow_job.queued` → `workflow_job.in_progress` → `workflow_job.completed`. However, if a job is processed too quickly (example just `run: echo "Hello World!"`) only two events fire: `workflow_job.queued` → `workflow_job.completed`
+* If a `Job is completed before starting.`, only the `queued_at` is received and `started_at` and `completed_at` remain null.
